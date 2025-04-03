@@ -1,0 +1,18 @@
+class Solution:
+    def insertionSortList(self, head: ListNode) -> ListNode:
+        dummy = ListNode()
+        prev= dummy
+        curr = head
+
+        while curr:
+            next= curr.next
+
+            while prev.next and prev.next.val <= curr.val:
+                prev= prev.next
+
+            curr.next, prev.next= prev.next, curr
+           
+            curr= next
+            prev= dummy
+        
+        return dummy.next
