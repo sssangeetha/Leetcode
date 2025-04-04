@@ -1,0 +1,26 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+
+        if len(nums)==1:
+            return nums
+        map=dict()
+        output=[]
+        for i in nums:
+            if i in map:
+                map[i]+=1
+            else:
+                map[i]=1
+
+        arr= [[] for _ in range(len(nums)+1)]
+
+        for x,y in map.items():
+            arr[y].append(x)
+        
+        for r in range(len(arr)-1,-1,-1):
+            for x in arr[r]:
+                if k > 0:
+                    output.append(x)
+                    k-=1
+                else:
+                    return output
+        return output
