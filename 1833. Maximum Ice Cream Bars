@@ -1,0 +1,23 @@
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        m= max(costs)
+        cnt=0
+        freq= [0 for i in range(m+1)]
+
+        for c in costs:
+            freq[c]+=1
+        
+        for i in range(len(freq)):
+            v= freq[i]
+
+            for m in range(v):
+                if coins < i:
+                    return cnt
+                else:
+                    coins-=i
+                    cnt+=1
+        return cnt 
+
+
+
+        
